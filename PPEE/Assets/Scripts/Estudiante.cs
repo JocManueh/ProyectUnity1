@@ -20,7 +20,7 @@ namespace PackagePersona
             this.carrera = carrera;
         }
 
-        public Estudiante(string nameP, string mailP, string ageP, string dirP) : base(nameP, mailP, ageP, dirP)
+        public Estudiante(string nameP, string mailP, string codigo, string dirP, string carrera) : base(nameP, mailP,dirP)
         {
         }
 
