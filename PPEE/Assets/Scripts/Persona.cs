@@ -7,14 +7,14 @@ namespace PackagePersona
     {
         private string nameP;
         private string mailP;
-        private int ageP;
+        private string ageP;
         private string dirP;
 
         public Persona()
         {
         }
 
-        public Persona(string nameP, string mailP, int ageP, string dirP)
+        public Persona(string nameP, string mailP, string ageP, string dirP)
         {
             this.nameP = nameP;
             this.mailP = mailP;
@@ -24,7 +24,7 @@ namespace PackagePersona
 
         public string NameP { get => nameP; set => nameP = value; }
         public string MailP { get => mailP; set => mailP = value; }
-        public int AgeP { get => ageP; set => ageP = value; }
+        public string AgeP { get => ageP; set => ageP = value; }
         public string DirP { get => dirP; set => dirP = value; }
     }
 }

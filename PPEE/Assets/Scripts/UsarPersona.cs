@@ -9,14 +9,14 @@ public class UsarPersona
     List<Estudiante> ListaE = new List<Estudiante>();
     public void Start()
     {
-        Estudiante PEPE = new Estudiante("2025_1", "ing multimedia", "PEPE PINGA", "Pepe_pinga@uao", "bochaplaza");
+        Estudiante PEPE = new Estudiante("FLORINDA MONTES","florinda_montes@uao","33","AGUABLANCA");
         ListaE.Add(PEPE);
-        Estudiante FLORINDA = new Estudiante("2025_2", "Mercadeo", "FLORINDA MONTES", "florinda_montes@uao", "jardin plaza");
+        Estudiante FLORINDA = new Estudiante("PEPE PINGA","pepe_pinga@uao","32","Bochaplaza");
         ListaE.Add(FLORINDA);
 
         for (int i = 0; i <ListaE.Count; i++)
         {
-            Debug.Log
+            Debug.Log("" + ListaE[i].NameP + "Carrera" + ListaE[i].Carrera);
         }
     }
 }
