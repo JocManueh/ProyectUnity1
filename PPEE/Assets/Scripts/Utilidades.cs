@@ -43,4 +43,17 @@ public class Utilidades
         File.WriteAllText(destino, jsonFinal);
         Debug.Log(destino);
     }
+    public static bool SaveDataStudent(List<Estudiante> listaE)
+    {
+        bool SaveDataStudent = false;
+        string jsonString = JsonUtility.ToJson(listaE, true);
+        Debug.Log("Lista"+jsonString);
+        EstudianteListaWrapper wrapper =  new EstudianteListaWrapper();
+        wrapper.listaE = listaE;
+        string path = Path.Combine(Application.streamingAssetsPath,"estudiantes.json");
+        return resultado;
+
+
+    }
 }
+
