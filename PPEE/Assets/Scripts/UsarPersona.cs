@@ -29,12 +29,20 @@ public class UsarPersona : MonoBehaviour
 
     // Utilidades.ExportarAlumnos(registroAlumnos);
     // 
-    public void addStudentList()
+    public void Update()
+    {
+        
+    }
+    public void AddStudentList()
     {
         string nameStudent01 = nameStudent.text;
         string mailStudent01 = mailStudent.text;
         string dirStudent01 = dirStudent.text;
+        string codeStudent01 = codeStudent.text;
         string carreraStudent01 = carreraStudent.text;
+        Estudiante E1 = new Estudiante(codeStudent01, carreraStudent01, nameStudent01, mailStudent01, dirStudent01);
+
+        registroAlumnos.Add(E1);
     }
 
     public void showStudentList()
