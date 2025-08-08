@@ -30,7 +30,7 @@ public class PosicionMouse : MonoBehaviour, IPointerClickHandler
     private ListaDePuntos lista = new ListaDePuntos();
 
     [Header("UI")]
-    public Button botonExportar; // Asignar en el inspector
+    public Button botonExportar; 
 
     void Start()
     {
