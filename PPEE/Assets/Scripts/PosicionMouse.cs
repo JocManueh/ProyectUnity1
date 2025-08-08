@@ -37,7 +37,6 @@ public class PosicionMouse : MonoBehaviour, IPointerClickHandler
         if (botonExportar != null)
             botonExportar.onClick.AddListener(ExportarJSON);
 
-        // Crear carpeta StreamingAssets si no existe
         string carpeta = Application.streamingAssetsPath;
         if (!Directory.Exists(carpeta))
         {
