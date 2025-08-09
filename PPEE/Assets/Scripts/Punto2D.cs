@@ -6,27 +6,23 @@ namespace PuntosXY
     [Serializable]
     public class Punto2D
     {
-        [SerializeField] private double coordX;
-        [SerializeField] private double coordY;
+        [SerializeField] private float coordX;
+        [SerializeField] private float coordY;
+
+        public float CoordX { get => coordX; set => coordX = value; }
+        public float CoordY { get => coordY; set => coordY = value; }
 
         public Punto2D() { }
 
-        public Punto2D(double valorX, double valorY)
+        public Punto2D(float valorX, float valorY)
         {
-            coordX = valorX;
-            coordY = valorY;
+            CoordX = valorX;
+            CoordY = valorY;
         }
 
-        public double X
-        {
-            get { return coordX; }
-            set { coordX = value; }
-        }
 
-        public double Y
-        {
-            get { return coordY; }
-            set { coordY = value; }
-        }
+
     }
+
+
 }
