@@ -1,81 +1,52 @@
-
+using System.Collections.Generic;
+using System.IO;
+using PackagePersona;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using System.Collections.Generic;
-using System.IO;
-using PuntosXY;
-using System;
 
-
-public class PosicionMouse : MonoBehaviour
+public class MouseOverPanel : MonoBehaviour
 {
+    public RectTransform panelRojo; // Asigna aquí tu panel rojo (RectTransform)
+    List<Punto2D> puntos = new List<Punto2D>();
 
-    [Serializable]
-    public class Punto
+    public void Start()
     {
-        public double x;
-        public double y;
 
-        public Punto(float x, float y)
+    }
+
+    void Update()
+    {
+        Vector2 localMousePos;
+
+        // Verifica si el mouse está sobre el panel
+        if (RectTransformUtility.RectangleContainsScreenPoint(panelRojo, Input.mousePosition))
         {
-            this.x = x;
-            this.y = y;
+            // Convierte a coordenadas locales del panel
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                panelRojo,
+                Input.mousePosition,
+                null, // o Camera.main si el Canvas está en Screen Space - Camera
+                out localMousePos
+            );
+
+            Punto2D punto2D = new Punto2D(localMousePos.x, localMousePos.y);
+            puntos.Add(punto2D);
+
+
+
+            //Debug.Log(" Mouse sobre panel rojo. Pos local: " + localMousePos.x);
+            //Debug.Log(" Mouse sobre panel rojo. Pos local: " + localMousePos);
         }
+
+
     }
-    [System.Serializable]
-    private class ListaDePuntos
+    public void saveDataPuntos()
     {
-        public List<Punto> puntos = new List<Punto>();
+        Debug.Log("Guardando puntos. Total: " + puntos.Count);
+        Utilidades.SaveDataPuntos(puntos);
     }
 
-    private ListaDePuntos lista = new ListaDePuntos();
-    private RectTransform rectTransform;
-
-
-    [Header("UI")]
-    public Button botonExportar; 
-
-    void Start()
-    {
-        rectTransform = GetComponent<RectTransform>();
-        if (botonExportar != null)
-            botonExportar.onClick.AddListener(ExportarJSON);
-
-        string carpeta = Application.streamingAssetsPath;
-        if (!Directory.Exists(carpeta))
-        {
-            Directory.CreateDirectory(carpeta);
-            Debug.Log("Carpeta StreamingAssets creada en: " + carpeta);
-        }
-    }
-
-
-
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        RectTransform rectTransform = GetComponent<RectTransform>();
-
-        Vector2 localPoint;
-        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform,Input.mousePosition,null, out localPoint))
-        {
-            if (rectTransform.rect.Contains(localPoint))
-            {
-
-
-                lista.puntos.Add(new Punto(localPoint.x, localPoint.y));
-                Debug.Log("Punto guardado: {localPoint}");
-            }
-        }
-    }
-    private void ExportarJSON()
-    {
-        string ruta = Path.Combine(Application.streamingAssetsPath, "puntos.json");
-        string json = JsonUtility.ToJson(lista, true);
-        File.WriteAllText(ruta, json);
-        Debug.Log("Archivo exportado en: {ruta}");
-    }
 
 
 }

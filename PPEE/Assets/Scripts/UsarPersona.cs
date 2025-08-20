@@ -1,56 +1,108 @@
 using UnityEngine;
-using System;
-using System.Collections.Generic;
 using PackagePersona;
+using System.Collections.Generic;
 using TMPro;
-using UnityEditor.Experimental.GraphView;
+using System.IO;
 
 public class UsarPersona : MonoBehaviour
 {
-    List<Estudiante> registroAlumnos = new List<Estudiante>();
+
+    List<Estudiante> listaE = new List<Estudiante>();
     public TMP_InputField nameStudent;
     public TMP_InputField mailStudent;
     public TMP_InputField dirStudent;
-    public TMP_InputField codeStudent;
+    public TMP_InputField CodeStudent;
     public TMP_InputField carreraStudent;
 
-    //public void Start()
-    // {
-    //   Estudiante estudiante1 = new Estudiante("Florinda Montes", "florinda_montes@uao", "2025", "Aguablanca", "Ing. Multimedia");
-    // registroAlumnos.Add(estudiante1);
 
-    //  Estudiante estudiante2 = new Estudiante("Pepe Pino", "pepe_pino@uao", "2025-2", "Bochaplaza", "Ing. Ambiental");
-    // registroAlumnos.Add(estudiante2);
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public void Start()
+    {
 
-    //  for (int i = 0; i < registroAlumnos.Count; i++)
-    // {
-    //     Debug.Log("Nombre: " + registroAlumnos[i].NameP + " | Carrera: " + registroAlumnos[i].Carrera);
-    // }
+        loadDataEstudiantes();
 
-    // Utilidades.ExportarAlumnos(registroAlumnos);
-    // 
+    }
+
+    // Update is called once per frame
     public void Update()
     {
-        
+
+    }
+
+    public void loadDataEstudiantes()
+    {
+        string filePath = Path.Combine(Application.streamingAssetsPath, "Estudiantes.txt");
+        string fileContent = "";
+
+        if (File.Exists(filePath))
+        {
+            try
+            {
+                fileContent = File.ReadAllText(filePath);
+                Debug.Log("Contenido del archivo: " + fileContent);
+
+                StringReader reader = new StringReader(fileContent);
+
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+
+                    string[] lineaEstudiante = line.Split(",");
+                    Estudiante e = new Estudiante(lineaEstudiante[3], lineaEstudiante[4],
+                        lineaEstudiante[0], lineaEstudiante[1], lineaEstudiante[2]);
+
+                    Debug.Log("Persona leida " + e.NameP + " " + e.NameCarrera);
+                    listaE.Add(e);
+
+                }
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError("Error al leer el archivo: " + e.Message);
+            }
+        }
+        else
+        {
+            Debug.LogError("El archivo no existe en: " + filePath);
+        }
     }
     public void AddStudentList()
     {
-        string nameStudent01 = nameStudent.text;
-        string mailStudent01 = mailStudent.text;
-        string dirStudent01 = dirStudent.text;
-        string codeStudent01 = codeStudent.text;
-        string carreraStudent01 = carreraStudent.text;
-        Estudiante E1 = new Estudiante(codeStudent01, carreraStudent01, nameStudent01, mailStudent01, dirStudent01);
+        string nameStudent1 = nameStudent.text;
+        string mailStudent1 = mailStudent.text;
+        string dirStudent1 = dirStudent.text;
+        string codeStudent1 = CodeStudent.text;
+        string carreraS1 = carreraStudent.text;
+        Estudiante e1 = new Estudiante(codeStudent1, carreraS1,
+           nameStudent1, mailStudent1, dirStudent1);
 
-        registroAlumnos.Add(E1);
+        listaE.Add(e1);
+
     }
 
-    public void showStudentList()
+    public void ShowStudentList()
     {
-        for (int i = 0; i < registroAlumnos.Count; i++)
+        for (int i = 0; i < listaE.Count; i++)
         {
-
-            Debug.Log("Nombre: " + registroAlumnos[i].NameP + " | Carrera: " + registroAlumnos[i].Carrera);
+            Debug.Log(listaE[i].NameP + " " + listaE[i].NameCarrera);
         }
     }
+
+       public static void SaveDataStudent(List<Estudiante> estudiantes)
+    {
+        string filePath = Path.Combine(Application.streamingAssetsPath, "Estudiantes.txt");
+
+        using (StreamWriter writer = new StreamWriter(filePath, false)) // false = sobrescribe
+        {
+            foreach (Estudiante e in estudiantes)
+            {
+                string line = $"{e.NameP},{e.MailP},{e.DirP},{e.CodeE},{e.NameCarrera}";
+                writer.WriteLine(line);
+            }
+        }
+
+        Debug.Log("Archivo Estudiantes.txt guardado con " + estudiantes.Count + " estudiantes.");
+    }
 }
+
+    

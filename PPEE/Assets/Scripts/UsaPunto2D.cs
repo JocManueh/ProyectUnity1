@@ -1,37 +1,32 @@
-using UnityEngine;
-using System;
-using System.Collections.Generic;
-using PuntosXY;
+// using UnityEngine;
+// using System;
+// using System.Collections.Generic;
+// using Puntos;
 
-public class UsaPunto2D : MonoBehaviour
-{
-    List<Punto2D> coordenadas2D = new List<Punto2D>();
+// public class usaPunto2D : MonoBehaviour
+// {
+//     List<Punto2D> listaP = new List<Punto2D>();
 
-    public void Start()
-    {
-        //Punto2D a = new Punto2D(11.7, 22.4);
-        //coordenadas2D.Add(a);
+//     public void Start()
+//     {
+//         Punto2D p1 = new Punto2D(10.5, 20.3);
+//         listaP.Add(p1);
+//         Punto2D p2 = new Punto2D(15.7, -8.2);
+//         listaP.Add(p2);
+//         Punto2D p3 = new Punto2D(0.0, 0.0);
+//         listaP.Add(p3);
+//         Punto2D p4 = new Punto2D(-12.4, 25.8);
+//         listaP.Add(p4);
 
-        //Punto2D b = new Punto2D(31.8, 19.3);
-        //coordenadas2D.Add(b);
+//         for (int i = 0; i < listaP.Count; i++)
+//         {
+//             Debug.Log("X: " + listaP[i].X + " Y: " + listaP[i].Y);
+//         }
 
-        //Punto2D c = new Punto2D(1.9, 0.0);
-        //coordenadas2D.Add(c);
 
-        //Punto2D d = new Punto2D(-32.4, 15.8);
-        //coordenadas2D.Add(d);
+//     }
 
-        foreach (var punto in coordenadas2D)
-        {
-            Debug.Log("Coordenada → X: " + punto.CoordX + " | Y: " + punto.CoordY);
-        }
-
-        Utilidades.ExportarCoordenadas(coordenadas2D);
-    }
-
-    public void Update()
-    {
-    
-    }
-}
-
+//     public void Update()
+//     {
+//     }
+// }
