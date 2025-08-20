@@ -2993,7 +2993,7 @@ MonoBehaviour:
   nameStudent: {fileID: 0}
   mailStudent: {fileID: 0}
   dirStudent: {fileID: 0}
-  codeStudent: {fileID: 0}
+  CodeStudent: {fileID: 0}
   carreraStudent: {fileID: 0}
 --- !u!1 &899083753
 GameObject:
@@ -4434,7 +4434,7 @@ GameObject:
   - component: {fileID: 1456271173}
   - component: {fileID: 1456271175}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: PPE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4477,7 +4477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0.6789794, a: 0.392}
+  m_Color: {r: 1, g: 0, b: 0.07898474, a: 0.392}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4514,7 +4514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d29cbdac774ece4468359c3373fe6e36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  botonExportar: {fileID: 153389504}
+  panelRojo: {fileID: 1456271172}
 --- !u!1 &1507543924
 GameObject:
   m_ObjectHideFlags: 0
@@ -6445,7 +6445,7 @@ MonoBehaviour:
   nameStudent: {fileID: 565652069}
   mailStudent: {fileID: 2013900001}
   dirStudent: {fileID: 899083755}
-  codeStudent: {fileID: 424299851}
+  CodeStudent: {fileID: 0}
   carreraStudent: {fileID: 1598215147}
 --- !u!1 &2062741453
 GameObject:
